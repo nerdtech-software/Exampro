@@ -13,7 +13,7 @@ const categories = [
 ];
 
 const BootcampCard = ({ title, description, buttonText }) => (
-  <div className="bg-white shadow-xl rounded-lg p-14   w-[1200px]  flex items-end justify-between h-32 ">
+  <div className="bg-white shadow-xl p-14   w-[1200px]  flex items-end justify-between h-32 border-2 border-gray-200 rounded-lg ">
     <div>
       <h2 className="text-2xl font-semibold ">{title}</h2>
       <p className="text-gray-600 mt-2">{description}</p>
@@ -26,7 +26,7 @@ const BootcampCard = ({ title, description, buttonText }) => (
 
 const Cards = () => {
   return (
-    <div className="p-6 flex flex-col items-center gap-6">
+    <div className="p-6 flex flex-col items-center gap-6  ">
      <BootcampCard
   title="Free GenAI Bootcamp Registration"
   description={
@@ -41,7 +41,7 @@ const Cards = () => {
         {categories.map((category, index) => (
           <div
             key={index}
-            className="bg-white shadow-md p-4 rounded-lg w-32 h-24 flex flex-col items-center justify-center"
+            className="bg-white shadow-xl p-4 rounded-lg w-32 h-24 flex flex-col items-center justify-center border-2 border-gray-200"
           >
             <span className="text-2xl">{category.logo}</span>
             <p className="text-sm mt-2">{category.name}</p>
@@ -76,16 +76,3 @@ Vie
 };
 
 export default Cards;
-
-
-
-
-
-
-
-
-
-
-
-
-

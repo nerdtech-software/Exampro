@@ -19,8 +19,9 @@ const Cloud = () => {
               Choose Your Path
             </a>
           </div>
-          <p className="mt-2 text-sm text-blue-500 underline cursor-pointer">
-           Choose a Google Cloud Certification
+          <p className="mt-2 text-xl  py-2  text-gray-500 underline cursor-pointer">
+          Which Cloud Certification is right for you?
+
           </p>
         </div>
         <div className="md:w-1/2 flex justify-center relative mt-8 md:mt-0">
