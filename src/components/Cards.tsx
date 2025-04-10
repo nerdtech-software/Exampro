@@ -13,7 +13,7 @@ const categories = [
 ];
 
 const BootcampCard = ({ title, description, buttonText }) => (
-  <div className="bg-white shadow-xl p-14   w-[1200px]  flex items-end justify-between h-32 border-2 border-gray-200 rounded-lg ">
+  <div className="bg-white shadow-xl p-8   w-[1200px]  flex items-end justify-between h-32 border-2 border-gray-200 rounded-lg ">
     <div>
       <h2 className="text-2xl font-semibold ">{title}</h2>
       <p className="text-gray-600 mt-2">{description}</p>
