@@ -16,12 +16,12 @@ const Cloud = () => {
             The <span className="font-bold">fast</span> and <span className="font-bold">easy</span> way to study
           </p>
           <div className="mt-6">
-           <Link to="/getStart"> <a
-              href=""
+          <Link
+              to="/getStart"
               className="bg-orange-500 text-white px-6 sm:px-7 py-3 sm:py-4 rounded-xl text-md sm:text-lg font-semibold hover:bg-orange-600"
             >
               Choose Your Path
-            </a></Link>
+            </Link>
           </div>
           <p className="mt-4 text-lg text-gray-500 underline cursor-pointer">
             Which Cloud Certification is right for you?
