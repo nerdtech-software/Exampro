@@ -9,7 +9,7 @@ const certifications = {
               difficulty: "Easy",
               duration: "1-2 weeks",
             },
-            {
+            { 
               title: "Vim Essentials",
               description: "Learn how you can add VIM to your developer toolbox",
               difficulty: "Easy",

@@ -59,7 +59,7 @@ const Cloud = () => {
             </button>
             <div className="aspect-w-16 aspect-h-9">
               <iframe
-                className="w-full h-full"
+                className="w-full h-96"
                 src="https://www.youtube.com/embed/CLR8Mbh7kaQ"
                 title="ExamPro Demo"
                 allowFullScreen
