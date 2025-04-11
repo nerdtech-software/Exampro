@@ -88,6 +88,10 @@ const AppRouter = createBrowserRouter([
         element: <Login />,
       },
       {
+        path: "/kubernetes",
+        element: <Kubernetes />,
+      },
+      {
         path: "/register",
         element: <Signup />,
       },

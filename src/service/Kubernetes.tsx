@@ -18,7 +18,7 @@ const  Kubernetes = () => {
   return (
     <div className="px-4 py-12 max-w-7xl mx-auto">
       <h1 className="text-3xl md:text-4xl font-bold text-center mb-10 justify-center flex">
-      Choose a Microsoft Azure Cloud Certification
+      Choose a Cloud-Native Certification
       </h1>
 
       {/* Top Section */}
