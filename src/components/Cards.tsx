@@ -24,7 +24,7 @@ interface BootcampCardProps {
 }
 
 const categories:category[] =[
-  { name: "ExamPro", logo: exampro, link: "/exampro" },
+  { name: "ExamPro", logo: exampro, link: "/cloud" },
   { name: "AWS", logo: aws, link: "/amazon" },
   { name: "Azure", logo: Azure, link: "/azure" },
   { name: "GCP", logo: google, link: "/google" },

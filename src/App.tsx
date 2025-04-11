@@ -8,6 +8,7 @@ import Amazon from "./page/Amazon";
 import GetStart from "./page/GetStart";
 import Home from "./page/Home";
 import Azure from "./service/Azure";
+import Cloud from "./service/Cloud";
 import CompTIA from "./service/CompTIA";
 import Github from "./service/Github";
 import Google from "./service/Google";
@@ -98,6 +99,10 @@ const AppRouter = createBrowserRouter([
       {
         path: "/PasswordRecovery",
         element: <PasswordRecoveryForm />,
+      },
+      {
+        path: "/cloud",
+        element: <Cloud />,
       },
     ],
   },
