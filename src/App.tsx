@@ -5,6 +5,7 @@ import Login from "./components/Login";
 import PasswordRecoveryForm from "./components/PasswordRecoveryForm";
 import Signup from "./components/Signup";
 import Amazon from "./page/Amazon";
+import Course from "./page/Course";
 import GetStart from "./page/GetStart";
 import Home from "./page/Home";
 import Azure from "./service/Azure";
@@ -103,6 +104,14 @@ const AppRouter = createBrowserRouter([
       {
         path: "/cloud",
         element: <Cloud />,
+      },
+      {
+        path: "amazon/course",
+        element: <Course />,
+      },
+      {
+        path: "google/course",
+        element: <Course />,
       },
     ],
   },

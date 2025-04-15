@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const certifications = {
   foundational: {
     title: "Foundational",
@@ -147,6 +149,7 @@ const AwsCertification = () => {
                     <span>{card.difficulty}</span>
                     <span>{card.duration}</span>
                   </div>
+                  <Link to="course">
                   <button
                     className={`py-2 px-4 text-sm rounded-full text-white font-semibold ${
                       value.title === "Foundational" ? "bg-[#2E3E50]" : "bg-[#3477F5]"
@@ -154,6 +157,7 @@ const AwsCertification = () => {
                   >
                     Learn More
                   </button>
+                  </Link>
                 </div>
               </div>
             ))}

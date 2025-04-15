@@ -12,6 +12,7 @@ const Home = () => {
       <Testimonials />
       <MeetYourFavorite />
       <Flashcard />
+      
     </div>
   );
 };

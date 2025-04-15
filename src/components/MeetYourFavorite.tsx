@@ -1,9 +1,9 @@
 import {
-    FaCanadianMapleLeaf,
-    FaDesktop,
-    FaHandSpock,
-    FaMedal,
-    FaTrophy,
+  FaCanadianMapleLeaf,
+  FaDesktop,
+  FaHandSpock,
+  FaMedal,
+  FaTrophy,
 } from "react-icons/fa";
   
   const MeetYourFavorite = () => {
@@ -31,7 +31,7 @@ import {
             <li className="flex items-center gap-3">
               <FaTrophy className="text-orange-500 text-xl" />
               <span>GCP Champion Innovator</span>
-            </li>
+            </li> 
             <li className="flex items-center gap-3">
               <FaDesktop className="text-blue-500 text-xl" />
               <span>Previously the CTO of multiple startups</span>

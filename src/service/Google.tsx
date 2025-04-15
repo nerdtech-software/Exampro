@@ -43,6 +43,7 @@ const certifications = {
     },
   };
   
+import { Link } from "react-router-dom";
 import logo from "../assets/gcp-logo.svg";
 const  Google = () => {
   return (
@@ -91,13 +92,14 @@ const  Google = () => {
                     <span>{card.difficulty}</span>
                     <span>{card.duration}</span>
                   </div>
-                  <button
+                <Link to="/google/course">  <button
                     className={`py-2 px-4 text-sm rounded-full text-white font-semibold ${
                       value.title === "Foundational" ? "bg-[#2E3E50]" : "bg-[#34A853]"
                     }`}
                   >
                     Learn More
                   </button>
+                  </Link>
                 </div>
               </div>
             ))}
