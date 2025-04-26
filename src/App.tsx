@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import Main from "./afterSubscription/Main";
 import { AuthProvider } from "./components/AuthContext";
@@ -23,18 +22,11 @@ import NVIDIA from "./service/NVIDIA";
 import Oracle from "./service/Oracle";
 import SpecialCloudPackages from "./service/SpecialCloudPackages";
 
-
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    // optional: API logout logic here
-  };
 
   const AppLayout = () => (
     <>
-      <Header isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+      <Header />
       <Outlet />
       <Footer />
     </>
@@ -58,16 +50,13 @@ const App = () => {
         { path: "/github", element: <Github /> },
         { path: "/oracle", element: <Oracle /> },
         { path: "/special", element: <SpecialCloudPackages /> },
-        {path: "/login", element: <Login setIsLoggedIn={setIsLoggedIn} />},
+        { path: "/login", element: <Login  /> },
         { path: "/register", element: <Signup /> },
         { path: "/PasswordRecovery", element: <PasswordRecoveryForm /> },
         { path: "/cloud", element: <Cloud /> },
         { path: "amazon/course", element: <Course /> },
         { path: "google/course", element: <Course /> },
-        {
-          path:"/main",element:<Main/>
-        }
-        
+        { path: "/main", element: <Main /> },
       ],
     },
   ]);
@@ -78,6 +67,5 @@ const App = () => {
     </AuthProvider>
   );
 };
-
 
 export default App;
