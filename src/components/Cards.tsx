@@ -46,7 +46,7 @@ const BootcampCard:React.FC<BootcampCardProps>=({
     <h2 className="text-xl sm:text-2xl font-semibold">{title}</h2>
     <p className="text-gray-600 mt-2 text-sm sm:text-base">{description}</p>
   </div>
-  <button className="bg-orange-500 text-white px-5 py-2 rounded-full hover:bg-orange-600 text-sm sm:text-base">
+  <button className="bg-black text-white px-5 py-2 rounded-full hover:bg-gray-600 text-sm sm:text-base">
     {buttonText}
   </button>
 </div>

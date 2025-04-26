@@ -45,7 +45,7 @@ const Header = () => {
 
         <Link
           to="/getStart"
-          className="hidden md:inline-block bg-orange-500 border border-orange-500 text-white rounded px-5 py-2 hover:bg-orange-600"
+          className="hidden md:inline-block bg-black border  text-white rounded px-5 py-2 hover:bg-gray-600"
         >
           Get Started
         </Link>
