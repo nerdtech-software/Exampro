@@ -18,7 +18,7 @@ const Cloud = () => {
           <div className="mt-6">
           <Link
               to="/getStart"
-              className="bg-orange-500 text-white px-6 sm:px-7 py-3 sm:py-4 rounded-xl text-md sm:text-lg font-semibold hover:bg-orange-600"
+              className="bg-black text-white px-6 sm:px-7 py-3 sm:py-4 rounded-xl text-md sm:text-lg font-semibold hover:bg-gray-600"
             >
               Choose Your Path
             </Link>
@@ -36,7 +36,7 @@ const Cloud = () => {
           />
           <div className="absolute inset-0 flex items-center justify-center">
             <div
-              className="bg-orange-500 p-4 rounded-full cursor-pointer hover:bg-orange-600"
+              className="bg-black p-4 rounded-full cursor-pointer hover:bg-gray-600"
               onClick={() => setIsVideoOpen(true)}
             >
               <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">

@@ -1,39 +1,53 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../components/AuthContext"; // Import your useAuth hook
 
 const Login = () => {
+  const { setIsLoggedIn } = useAuth(); 
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
+  // 🆕 Auto-fill email/password if saved
   useEffect(() => {
-    const savedEmail = localStorage.getItem("savedEmail");
-    const savedPassword = localStorage.getItem("savedPassword");
+    const savedEmail = localStorage.getItem("email");
+    const savedPassword = localStorage.getItem("password");
+
+    if (savedEmail) setEmail(savedEmail);
+    if (savedPassword) setPassword(savedPassword);
+
     if (savedEmail && savedPassword) {
-      setEmail(savedEmail);
-      setPassword(savedPassword);
       setRememberMe(true);
     }
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/login",
+        { email, password },
+        { withCredentials: true }
+      );
+      console.log("Login success:", response.data);
+      setIsLoggedIn(true); 
 
-    if (rememberMe) {
-      localStorage.setItem("savedEmail", email);
-      localStorage.setItem("savedPassword", password);
-    } else {
-      localStorage.removeItem("savedEmail");
-      localStorage.removeItem("savedPassword");
+      if (rememberMe) {
+        localStorage.setItem("email", email);
+        localStorage.setItem("password", password);
+      } else {
+        localStorage.removeItem("email");
+        localStorage.removeItem("password");
+      }
+
+      navigate("/main", { replace: true }); // 🆕 Better navigation
+    } catch (error) {
+      console.error("Login failed:", error);
+      alert("Login failed. Please try again.");
     }
-
-    // Simulate login success (replace with real API call)
-    console.log("Logging in:", { email, password });
-
-    // Redirect to homepage
-    navigate("/");
   };
 
   return (
@@ -49,7 +63,7 @@ const Login = () => {
         <div className="w-full bg-white rounded-lg shadow border sm:max-w-md xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-black md:text-2xl">
-              Login in to your account
+              Login to your account
             </h1>
             <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
               <div>
@@ -105,8 +119,9 @@ const Login = () => {
                 type="submit"
                 className="w-full text-black bg-orange-500 hover:bg-orange-600 rounded-lg text-sm px-5 py-2.5"
               >
-                Login in
+                Login
               </button>
+
               <p className="text-sm font-light text-black">
                 Don’t have an account yet?{" "}
                 <Link to="/register" className="font-medium text-primary-600 hover:underline">

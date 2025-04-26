@@ -1,4 +1,7 @@
+import { useState } from "react";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import Main from "./afterSubscription/Main";
+import { AuthProvider } from "./components/AuthContext";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Login from "./components/Login";
@@ -20,105 +23,61 @@ import NVIDIA from "./service/NVIDIA";
 import Oracle from "./service/Oracle";
 import SpecialCloudPackages from "./service/SpecialCloudPackages";
 
-const AppLayout = () => (
-  <>
-    <Header />
-    <Outlet />
-    <Footer />
-  </>
-);
-
-const AppRouter = createBrowserRouter([
-  {
-    path: "/",
-    element: <AppLayout />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "/getStart",
-        element: <GetStart />,
-      },
-      {
-        path: "/amazon",
-        element: <Amazon />,
-      },
-      {
-        path: "/google",
-        element: <Google />,
-      },
-      {
-        path: "/azure",
-        element: <Azure />,
-      },
-      {
-        path: "/kubernetes",
-        element: <Kubernetes />,
-      },
-      {
-        path: "/hashicorp",
-        element: <Hashicorp />,
-      },
-      {
-        path: "/nvidia",
-        element: <NVIDIA />,
-      },
-      {
-        path: "/comptia",
-        element: <CompTIA />,
-      },
-      {
-        path: "/lpi",
-        element: <Linux />,
-      },
-      {
-        path: "/github",
-        element: <Github />,
-      },
-      {
-        path: "/oracle",
-        element: <Oracle />,
-      },
-      {
-        path: "/special",
-        element: <SpecialCloudPackages />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/kubernetes",
-        element: <Kubernetes />,
-      },
-      {
-        path: "/register",
-        element: <Signup />,
-      },
-      {
-        path: "/PasswordRecovery",
-        element: <PasswordRecoveryForm />,
-      },
-      {
-        path: "/cloud",
-        element: <Cloud />,
-      },
-      {
-        path: "amazon/course",
-        element: <Course />,
-      },
-      {
-        path: "google/course",
-        element: <Course />,
-      },
-    ],
-  },
-]);
 
 const App = () => {
-  return <RouterProvider router={AppRouter} />;
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    // optional: API logout logic here
+  };
+
+  const AppLayout = () => (
+    <>
+      <Header isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+      <Outlet />
+      <Footer />
+    </>
+  );
+
+  const AppRouter = createBrowserRouter([
+    {
+      path: "/",
+      element: <AppLayout />,
+      children: [
+        { path: "/", element: <Home /> },
+        { path: "/getStart", element: <GetStart /> },
+        { path: "/amazon", element: <Amazon /> },
+        { path: "/google", element: <Google /> },
+        { path: "/azure", element: <Azure /> },
+        { path: "/kubernetes", element: <Kubernetes /> },
+        { path: "/hashicorp", element: <Hashicorp /> },
+        { path: "/nvidia", element: <NVIDIA /> },
+        { path: "/comptia", element: <CompTIA /> },
+        { path: "/lpi", element: <Linux /> },
+        { path: "/github", element: <Github /> },
+        { path: "/oracle", element: <Oracle /> },
+        { path: "/special", element: <SpecialCloudPackages /> },
+        {path: "/login", element: <Login setIsLoggedIn={setIsLoggedIn} />},
+        { path: "/register", element: <Signup /> },
+        { path: "/PasswordRecovery", element: <PasswordRecoveryForm /> },
+        { path: "/cloud", element: <Cloud /> },
+        { path: "amazon/course", element: <Course /> },
+        { path: "google/course", element: <Course /> },
+        {
+          path:"/main",element:<Main/>
+        }
+        
+      ],
+    },
+  ]);
+
+  return (
+    <AuthProvider>
+      <RouterProvider router={AppRouter} />
+    </AuthProvider>
+  );
 };
+
 
 export default App;

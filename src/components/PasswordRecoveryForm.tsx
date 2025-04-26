@@ -1,11 +1,32 @@
+import axios from "axios"; // Import axios for API requests
 import { FormEvent, JSX, useState } from "react";
+import { useNavigate } from "react-router-dom"; // For redirection
 
 export default function PasswordRecoveryForm(): JSX.Element {
   const [email, setEmail] = useState<string>("");
+  const [error, setError] = useState<string | null>(null); // For handling errors
+  const [loading, setLoading] = useState<boolean>(false); // To show a loading state
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert(`Password recovery email sent to: ${email}`);
+    setLoading(true);
+    setError(null); // Clear previous errors
+
+    try {
+      // Make an API call to trigger password recovery (adjust the URL as needed)
+      const response = await axios.post("http://localhost:5000/api/auth/password-recovery", { email });
+      console.log("Password recovery email sent:", response.data);
+      alert(`Password recovery email sent to: ${email}`);
+
+      // Redirect user to the login page after successful request
+      navigate("/login");
+    } catch (err) {
+      setError("Failed to send recovery email. Please try again."); // Handle any errors
+      console.error("Password recovery error:", err);
+    } finally {
+      setLoading(false); // Stop loading spinner
+    }
   };
 
   return (
@@ -31,6 +52,9 @@ export default function PasswordRecoveryForm(): JSX.Element {
           </div>
         </div>
 
+        {/* Error Message */}
+        {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+
         <label className="block text-gray-700 mb-2">Email</label>
         <input
           type="email"
@@ -42,9 +66,10 @@ export default function PasswordRecoveryForm(): JSX.Element {
 
         <button
           type="submit"
+          disabled={loading} // Disable button while loading
           className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 rounded"
         >
-          SEND PASSWORD RECOVERY
+          {loading ? "Sending..." : "SEND PASSWORD RECOVERY"}
         </button>
       </form>
 
